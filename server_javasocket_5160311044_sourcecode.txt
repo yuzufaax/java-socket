@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package server_javasocket_5160311044;
+
+/**
+ *
+ * @author yuxufaax
+ */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server_javasocket_5160311044 {
+
+    public static void main(String[] args) {
+        try
+        {
+            ServerSocket ser = new ServerSocket(9999);
+            Socket sock = ser.accept();
+            
+            BufferedReader ed = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+            String tmp = ed.readLine();
+             System.out.print("I Recieved :"+tmp);
+            
+             PrintStream pr = new PrintStream(sock.getOutputStream());
+             String str = "M.Yusuf 5160311033";
+             pr.println(str);        
+        }
+      catch(Exception ex){}
+    }  
+}
